@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imgs/icono.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tienda Deportiva</title>
+</head>
+
+<body>
+    <header>
+        <div class="contenedor">
+            <nav>
+                <ul>
+                    <!-- Navegación principal -->
+                    <li><a href="#" id="btnIniciarSesion">Iniciar sesión</a></li>
+                    <li><a href="#" id="btnRegistrarse">Registrarse</a></li>
+                    <li><a href="#" id="btnVerCompras" style="display:none;">Mis compras</a></li>
+                    <li><a href="#" id="btnVerOfertas" style="display:none;">Ver ofertas</a></li>
+                    <li><a href="#" id="btnCrearProducto" style="display:none;">Crear producto</a></li>
+                    <li><a href="#" id="btnAdministrarCompras" style="display:none;">Administrar compras</a></li>
+                    <li><a href="#" id="btnAdministrarProductos" style="display:none;">Administrar productos</a></li>
+                    <li><a href="#" id="btnInformeGanancias" style="display:none;">Informe de ganancias</a></li>
+                    <li><a href="#" id="btnCerrarSesion" style="display:none;">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Pantalla de bienvenida -->
+        <div class="seccion" id="pantallaBienvenida">
+            <h2>Bienvenidos</h2>
+        </div>
+
+        <!-- Pantalla de registro de usuario -->
+        <div class="seccion" id="pantallaRegistro" style="display:none;">
+            <h2>Registro de usuario</h2>
+            <form id="formularioRegistro">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" required>
+                <label for="nombreUsuario">Nombre de usuario:</label>
+                <input type="text" id="nombreUsuario" required>
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" required>
+                <label for="tarjetaCredito">Número de tarjeta de crédito:</label>
+                <input type="text" id="tarjetaCredito" required>
+                <label for="cvc">CVC:</label>
+                <input type="text" id="cvc" required>
+                <button type="button" id="btnEnviarRegistro">Registrar</button>
+            </form>
+            <p id="mensajesRegistro" class="mensaje-error"></p>
+        </div>
+
+        <!-- Pantalla de inicio de sesión -->
+        <div class="seccion" id="pantallaInicioSesion" style="display:none;">
+            <h2>Iniciar sesión</h2>
+            <form id="formularioInicioSesion">
+                <label for="nombreUsuarioInicio">Nombre de usuario:</label>
+                <input type="text" id="nombreUsuarioInicio" required>
+                <label for="contrasenaInicio">Contraseña:</label>
+                <input type="password" id="contrasenaInicio" required>
+                <label for="tipoUsuarioInicio">Tipo de usuario:</label>
+                <select id="tipoUsuarioInicio" required>
+                    <option value="comprador">Comprador</option>
+                    <option value="admin">Administrador</option>
+                </select>
+                <button type="button" id="btnEnviarInicioSesion">Iniciar sesión</button>
+            </form>
+            <p id="mensajesInicioSesion" class="mensaje-error"></p>
+        </div>
+
+        <!-- Pantalla de productos disponibles -->
+        <div class="seccion" id="pantallaProductos" style="display:none;">
+            <h2>Productos disponibles</h2>
+            <div id="listaProductos"></div>
+        </div>
+
+        <!-- Pantalla de productos en oferta -->
+        <div class="seccion" id="pantallaOfertas" style="display:none;">
+            <h2>Productos en oferta</h2>
+            <div id="listaOfertas"></div>
+        </div>
+
+        <!-- Pantalla de mis compras -->
+        <div class="seccion" id="pantallaCompras" style="display:none;">
+            <h2>Mis compras</h2>
+            <select id="filtroEstadoCompras">
+                <option value="all">Todas</option>
+                <option value="aprobada">Aprobadas</option>
+                <option value="pendiente">Pendientes</option>
+                <option value="cancelada">Canceladas</option>
+            </select>
+            <div id="listaCompras"></div>
+            <p id="totalComprasAprobadas"></p>
+            <p id="saldoUsuario"></p>
+        </div>
+
+        <!-- Pantalla de administración de compras -->
+        <div class="seccion" id="pantallaAdministrarCompras" style="display:none;">
+            <h2>Administrar compras</h2>
+            <div id="comprasPendientes">
+                <h3>Compras pendientes</h3>
+                <div id="listaComprasPendientes"></div>
+            </div>
+            <div id="comprasAprobadas">
+                <h3>Compras aprobadas</h3>
+                <div id="listaComprasAprobadas"></div>
+            </div>
+            <div id="comprasCanceladas">
+                <h3>Compras canceladas</h3>
+                <div id="listaComprasCanceladas"></div>
+            </div>
+        </div>
+
+        <!-- Pantalla de creación de nuevo producto -->
+        <div class="seccion" id="pantallaCrearProducto" style="display:none;">
+            <h2>Crear nuevo producto</h2>
+            <form id="formularioCrearProducto">
+                <label for="nombreProducto">Nombre del producto:</label>
+                <input type="text" id="nombreProducto" required>
+                <label for="precioProducto">Precio:</label>
+                <input type="number" id="precioProducto" required>
+                <label for="descripcionProducto">Descripción:</label>
+                <textarea id="descripcionProducto" required></textarea>
+                <label for="imagenProducto">Imagen del producto:</label>
+                <input type="file" id="imagenProducto" required>
+                <label for="stockProducto">Cantidad de stock disponible:</label>
+                <input type="number" id="stockProducto" required>
+                <button type="button" id="btnEnviarProducto">Crear producto</button>
+            </form>
+            <p id="mensajesErrorProducto" class="mensaje-error"></p>
+        </div>
+
+        <!-- Pantalla de administración de productos -->
+        <div class="seccion" id="pantallaAdministrarProductos" style="display:none;">
+            <h2>Administrar productos</h2>
+            <div id="listaAdministrarProductos">
+                <p id="mensajeExito" class="mensaje-exito" style="display:none;">Cambios realizados con éxito</p>
+            </div>
+        </div>
+
+        <!-- Pantalla de informe de ganancias -->
+        <div class="seccion" id="pantallaGanancias" style="display:none;">
+            <h2>Informe de ganancias</h2>
+            <div id="informeGanancias"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Tienda Deportiva. Camilo Pardo - 200710</p>
+    </footer>
+   
+    <script src="codigo/biblioteca.js"></script>
+    <script src="codigo/script.js"></script>
+    
+</body>
+
+</html>
