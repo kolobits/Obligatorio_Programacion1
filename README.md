@@ -47,19 +47,6 @@ Clase central que maneja toda la lógica:
 
 ---
 
-## 🗂️ Estructura de Carpetas
-
-Obligatorio/
-├── index.html # Página principal
-├── styles.css # Estilos del sitio
-├── js/
-│ ├── script.js # Lógica general del sistema
-│ └── biblioteca.js # Funciones auxiliares y validaciones
-├── imgs/ # Imágenes de productos
-└── README.md # Este archivo
-
----
-
 ## 👨‍💻 Autor
 
 **Camilo Pardo**  
